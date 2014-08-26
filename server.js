@@ -50,7 +50,7 @@ console.log(rserver)
     //
     // Server options (from "create-servers")
     //
-    http: 3333 //,
+    http: process.env.PORT||3333 //,
     //https: {
     //  port: 443,
     //  root: '/path/to/your/ssl/files',
