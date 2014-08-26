@@ -1,0 +1,9 @@
+{
+  "name":"npm-server",
+  "dependencies": {
+    "create-servers": "~1.2.0",
+    "director": "~1.2.2",
+    "http-proxy": "~1.1.2",
+    "request": "~2.33.0"
+  }
+}
