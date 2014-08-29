@@ -9,7 +9,6 @@ console.log(rserver)
   // somewhere
   //
   var config = {
-      writePrivateOk:true,
     //
     // Private npm options.
     //
