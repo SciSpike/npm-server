@@ -47,14 +47,14 @@ module.exports = [
     "to": "../../../_session",
     "method": "DELETE"
   },
-  {
-    //
-    // - How to handle sessions between two CouchDB servers?
-    //
-    "from": "/_session",
-    "to": "../../../_session",
-    "method": "HEAD"
-  },
+//  {
+//    //
+//    // - How to handle sessions between two CouchDB servers?
+//    //
+//    "from": "/_session",
+//    "to": "../../../_session",
+//    "method": "HEAD"
+//  },
   {
     //
     // - Requires merge of data from public & private npm
