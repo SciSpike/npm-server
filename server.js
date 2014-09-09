@@ -6,16 +6,15 @@ var couchServer = process.env.COUCH_SERVER||'http://127.0.0.1:5984';
 var rserver = url.parse(couchServer);
 rserver.vhost = process.env.VHOST||"localhost:3333";
 rserver.secure=true;
-console.log(rserver)
+console.log(rserver);
 
 var aserver = url.parse(couchServer);
 aserver.vhost = process.env.VHOST_CENTRAL||"localhost:5984";
-var privateFile = "./private.json"
+var privateFile = "./private.json";
 var privateJson = require(privateFile);
-var privatePackages = privateJson.packages
+var privatePackages = privateJson.packages;
 var follow = require('follow');
 var followDB = couchServer.replace('://',"://"+"admin:"+couchPassword+"@") + '/registry';
-console.log(followDB)
 var feed = new follow.Feed({
   db : followDB,
   since : privateJson.version
@@ -25,9 +24,9 @@ feed.on('change', function(change) {
   console.log('[follow]',JSON.stringify(change,null,2));
   privateJson.version = change.seq;
   if (change.hasOwnProperty('deleted') && change.deleted) {
-    delete privatePackages[change.id]
+    delete privatePackages[change.id];
   } else {
-    privatePackages[change.id]=1
+    privatePackages[change.id]=1;
   }
   fs.writeFile(privateFile,JSON.stringify(privateJson,null,2),function(err){
     if(err){
@@ -37,11 +36,11 @@ feed.on('change', function(change) {
 })
 
 feed.on('error', function(err) {
-  console.log('[follow]', err)
-  process.exit(1)
+  console.log('[follow]', err);
+  process.exit(1);
 })
 
-console.log(aserver)
+console.log(aserver);
   //
   // Configure your private npm. You could load this in from a file
   // somewhere
@@ -100,7 +99,7 @@ console.log(aserver)
       console.log('Error starting private npm: %j, %s', servers, err.stack);
       return process.exit(1);
     }
-    feed.follow()
+    feed.follow();
     console.log('Private npm running on %j servers.', Object.keys(servers));
   });
 
