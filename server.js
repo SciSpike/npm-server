@@ -56,8 +56,10 @@ console.log(aserver);
       // cycle through. Optionally you can also have an array of url.parsed urls
       // as well
       //
-      npm: url.parse('https://registry.npmjs.org'),
-
+      npm: {
+        read:url.parse(process.env.NPM_MASTER||'https://registry.npmjs.org'),
+        write:rserver
+      },
       policy: {
         npm: rserver,
         auth: aserver,
